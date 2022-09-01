@@ -40,8 +40,10 @@ class FamilyStructure:
         return randint(0, 99999999)
 
     def add_member(self, member):
+        self._members.append(member)
+        return None
         # fill this method and update the return
-        pass
+       
 
     def delete_member(self, id):
         # fill this method and update the return

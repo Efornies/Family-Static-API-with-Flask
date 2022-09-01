@@ -35,6 +35,23 @@ def get_one_member(member_id):
     member = jackson_family.get_member(member_id)
     return jsonify(response_body), 200
 
+@app.route('/member', methods=['POST'])
+def post_one_member():
+    body_last_name = request.json.get("last_name")
+    body_name = request.json.get("first_name")
+    body_age = request.json.get("age")
+    body_id = request.json.get("id")
+    body_lucky_numbers = request.json.get("lucky_numbers")
+    member = {
+        "id": body_id,
+        "first_name": body_name,
+        "last_name": body_last_name,
+        "age": body_age ,
+        "lucky_numbers": body_lucky_numbers
+    }
+    member = jackson_family.add_member(member)
+    return jsonify(None), 200
+
 # this only runs if `$ python src/app.py` is executed
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))
